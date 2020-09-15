@@ -4,7 +4,6 @@
 
 $json = json_encode(get_post_data()[0]);
 $data = json_decode($json, true);
-//$data = get_post_data()[0]; TRY THIS LATER
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
