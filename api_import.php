@@ -2,8 +2,7 @@
 
 //API zum Import von Daten aus der Desktop-Anwendung
 
-$json = json_encode(get_post_data()[0]);
-$data = json_decode($json, true);
+$data = get_post_data();
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
@@ -277,7 +276,7 @@ function get_post_data ()
 	{
 		return;
 	}
-	$data = json_decode($json);
+	$data = json_decode($json, true);
 	return $data;
 }
 
