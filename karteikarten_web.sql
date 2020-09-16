@@ -22,6 +22,8 @@ SET time_zone = "+00:00";
 -- Datenbank: `karteikarten_web`
 --
 
+USE DATABASE `karteikarten_web`;
+
 -- --------------------------------------------------------
 
 --
