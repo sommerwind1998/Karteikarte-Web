@@ -62,8 +62,8 @@ function get_karteikarten ($code, $conn)
 		
 		$array = ["Frage" => $frage,
 					"Antwort" => $antwort,
-					"Bild Frage" => unserialize($frage_bild),
-					"Bild Antwort" => unserialize($antwort_bild)];
+					"BildFrage" => unserialize($frage_bild),
+					"BildAntwort" => unserialize($antwort_bild)];
 		$ret[] = $array;
 	}
 	
