@@ -108,12 +108,12 @@ function database_insert ($data, $conn)
 	}
 	
 	//Fächer
+	$klasse_id = klassen_id ($data, $conn);
 	$fächer_daten = $data["Fach"];
 	$fach_id_array = [];
 	foreach ($fächer_daten as $fach)
 	{
 		//daten
-		$klassen_name = $data["Klasse"][0]["Name"];
 		$fach_name = $fach["Name"];
 		$fach_name_lc = strtolower($fach_name);
 		$klassen_name_lc = strtolower($klassen_name);
@@ -131,14 +131,6 @@ function database_insert ($data, $conn)
 			continue; 
 		}
 		
-		//finde ID der Klasse
-		$helper_sql = 'SELECT klasse_id FROM klasse WHERE klasse_name=?;';
-		$stmt = $conn->prepare($helper_sql);
-		$stmt->bind_param('s', $klassen_name_lc);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		$klasse_id = $result->fetch_assoc()["klasse_id"];
-
 		//sql
 		$sql = 'INSERT INTO fach (fach_name, klasse) VALUES (?, ?);';
 		
@@ -150,6 +142,13 @@ function database_insert ($data, $conn)
 		$fach_id = $fach["FachID"];
 		$fach_id_array[] = [$my_id, $fach_id];
 	}
+	
+	$helper_sql = 'SELECT klasse_name FROM klasse WHERE klasse_id=?;';
+	$stmt = $conn->prepare($helper_sql);
+	$stmt->bind_param('i', $klasse_id);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$klassen_name = $result->fetch_assoc()["klasse_name"];
 	
 	//Themen
 	$themen_daten = $data["Thema"];
@@ -172,7 +171,7 @@ function database_insert ($data, $conn)
 			continue; 
 		}
 		
-		$code = generiere_download_code($klassen_name, $fach_name);
+		$code = generiere_download_code($klassen_name, $thema_name);
 		$fach_given_id = $thema["ThemaID"];
 		if ($fach_given_id != null) //falls ein Fach eingetragen ist....
 		{
@@ -307,4 +306,15 @@ function generiere_download_code ($klasse, $thema)
 function isValidJson($string) {
    json_decode($string);
    return json_last_error() == JSON_ERROR_NONE;
+}
+
+function klassen_id ($data, $conn){
+	$nutzername = $data["Benutzer"][0]["Benutzername"];
+	
+	$sql = 'SELECT klasse FROM benutzer WHERE benutzer_name=?;';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $nutzername);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	return $result->fetch_assoc()["klasse"];
 }
