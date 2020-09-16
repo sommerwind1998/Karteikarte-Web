@@ -37,6 +37,8 @@ function get_karteikarten ($code, $conn)
 	while($row = $result->fetch_assoc()){
 		$frage = $row["frage_text"];
 		$antwort = $row["antwort_text"];
+		$frage_bild = null;
+		
 		if ($row["frage_bild"] != null)
 		{
 			$sql_frage = 'SELECT bild_daten FROM bild WHERE bild_id = ?';
@@ -47,6 +49,7 @@ function get_karteikarten ($code, $conn)
 			$frage_bild = $res_f->fetch_assoc()["bild_daten"];
 		}
 		
+		$antwort_bild = null;
 		if ($row["antwort_bild"] != null)
 		{
 			$sql_antwort = 'SELECT bild_daten FROM bild WHERE bild_id = ?';
