@@ -18,7 +18,7 @@ $stmt->execute();
 $klasse_id = $conn->insert_id;
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$nutzer_sql = 'INSERT INTO benutzer (benutzer_name, passwort_hash, klasse) VALUES (?, ?, ?)';
+$nutzer_sql = 'INSERT INTO benutzer (benutzer_name, passwort_hash, klasse, admin) VALUES (?, ?, ?, 1)';
 $stmt = $conn->prepare($nutzer_sql);
 $stmt->bind_param('ssi', $user, $hash, $klasse_id);
 $stmt->execute();
