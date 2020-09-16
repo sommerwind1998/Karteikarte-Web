@@ -42,6 +42,7 @@ function database_insert ($data, $conn)
 	//Antworten
 	$antworten_daten = $data["Antwort"];
 	$antwort_id_array = [];
+	$bild_id = null;
 	foreach ($antworten_daten as $antwort)
 	{
 		//daten
@@ -75,6 +76,7 @@ function database_insert ($data, $conn)
 	//Fragen
 	$fragen_daten = $data["Frage"];
 	$frage_id_array = [];
+	$bild_id = null;
 	foreach ($fragen_daten as $frage)
 	{
 		//daten
@@ -114,6 +116,7 @@ function database_insert ($data, $conn)
 		$klassen_name = $data["Klasse"][0]["Name"];
 		$fach_name = $fach["Name"];
 		$fach_name_lc = strtolower($fach_name);
+		$klassen_name_lc = strtolower($klassen_name);
 		
 		//existiert das Fach bereits? --> nach Namen prüfen (case insensitive)
 		$helper_sql = 'SELECT fach_id FROM fach WHERE lower(fach_name)=?;';
