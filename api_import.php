@@ -111,6 +111,14 @@ function database_insert ($data, $conn)
 	$klasse_id = klassen_id ($data, $conn);
 	$fächer_daten = $data["Fach"];
 	$fach_id_array = [];
+	
+	$helper_sql = 'SELECT klasse_name FROM klasse WHERE klasse_id=?;';
+	$stmt = $conn->prepare($helper_sql);
+	$stmt->bind_param('i', $klasse_id);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$klassen_name = $result->fetch_assoc()["klasse_name"];
+	
 	foreach ($fächer_daten as $fach)
 	{
 		//daten
@@ -142,13 +150,6 @@ function database_insert ($data, $conn)
 		$fach_id = $fach["FachID"];
 		$fach_id_array[] = [$my_id, $fach_id];
 	}
-	
-	$helper_sql = 'SELECT klasse_name FROM klasse WHERE klasse_id=?;';
-	$stmt = $conn->prepare($helper_sql);
-	$stmt->bind_param('i', $klasse_id);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	$klassen_name = $result->fetch_assoc()["klasse_name"];
 	
 	//Themen
 	$themen_daten = $data["Thema"];
