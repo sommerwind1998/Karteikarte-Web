@@ -2,20 +2,25 @@
 
 //api for exporting to the desktop app
 
-$data = get_post_data();
+if ($data = get_post_data())
+{
+	$params = include("datenbankparameter.php");
+	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 
-$params = include("datenbankparameter.php");
-$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+	$code = $data["Code"];
 
-$code = $data["Code"];
+	$output = [];
+	$output["Kontext"] = get_thema($code, $conn);
+	$output["Karteikarten"] = get_karteikarten($code, $conn);
 
-$output = [];
-$output["Thema"] = get_thema_name($code, $conn);
-$output["Karteikarten"] = get_karteikarten($code, $conn);
+	echo(json_encode($output));
 
-echo(json_encode($output));
-
-$conn->close(); 
+	$conn->close(); 
+}
+else
+{
+	echo("INVALID JSON");
+}
 
 //------------- Helpers ----------------
 
@@ -70,15 +75,17 @@ function get_karteikarten ($code, $conn)
 	return $ret;
 }
 
-function get_thema_name ($code, $conn)
+function get_thema ($code, $conn)
 {
-		$sql = 'SELECT thema_name FROM thema WHERE code = ?';
+		$sql = 'SELECT t.thema_name, f.fach_name FROM thema t INNER JOIN fach f ON t.fach=f.fach_id WHERE t.code = ?';
 		$stmt = $conn->prepare($sql);
 		$stmt->bind_param('s', $code);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$name = $result->fetch_assoc()["thema_name"];
-		return ["Thema" => $name];
+		$row = $result->fetch_assoc();
+		$thema = $row["thema_name"];
+		$fach = $row["fach_name"];
+		return ["Thema" => $thema, "Fach" => $fach];
 }
 
 function get_post_data ()
@@ -86,7 +93,7 @@ function get_post_data ()
 	$json = file_get_contents('php://input');
 	if (!isValidJson($json))
 	{
-		return;
+		return false;
 	}
 	$data = json_decode($json, true);
 	return $data;
