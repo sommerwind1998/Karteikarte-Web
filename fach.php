@@ -22,14 +22,15 @@ if ($result->fetch_assoc()["admin"] == 1)
 	$admin=true;
 }
 
-$sql = 'SELECT thema_name, thema_id FROM thema WHERE fach = ?';
+$sql = 'SELECT fach_name FROM fach WHERE fach_id = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $fach);
 $stmt->execute();
-$result = $stmt->get_result();
+$fach_name = $stmt->get_result()->fetch_assoc()["fach_name"];
+
 
 $output = '
-<h1>Themen</h1>
+<h1>'.$fach_name.'</h1>
 	<table class="table table-hover">
   <thead>
     <tr>
@@ -45,6 +46,12 @@ $output .= '
   </thead>
   <tbody>
 ';
+
+$sql = 'SELECT thema_name, thema_id FROM thema WHERE fach = ?';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $fach);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $highlight = "";
 $highlight_id = 0;
