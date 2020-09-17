@@ -170,7 +170,7 @@ function database_insert ($data, $conn)
 		$array = $result->fetch_assoc();
 		if (isset($array["thema_id"])){
 			$thema_id = $array["thema_id"];
-			$thema_id_array[] = [$thema_id, $fach["ThemaID"]];
+			$thema_id_array[] = [$thema_id, $thema["ThemaID"]];
 			continue; 
 		}
 		else
