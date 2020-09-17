@@ -29,6 +29,9 @@ else
 		<head>
 			<meta http-equiv="refresh" content="0; url=login_form.php" />
 		</head>
+		<body>
+			<script>alert("Nutzername oder Passwort falsch!")</script>
+		</body>
 	</html>
 	');
 }
