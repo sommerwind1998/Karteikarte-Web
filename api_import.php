@@ -139,6 +139,8 @@ function database_insert ($data, $conn)
 			continue; 
 		}
 		
+		else
+		{
 		//sql
 		$sql = 'INSERT INTO fach (fach_name, klasse) VALUES (?, ?);';
 		
@@ -149,6 +151,7 @@ function database_insert ($data, $conn)
 		$my_id = $conn->insert_id;
 		$fach_id = $fach["FachID"];
 		$fach_id_array[] = [$my_id, $fach_id];
+		}
 	}
 	
 	//Themen
@@ -172,6 +175,7 @@ function database_insert ($data, $conn)
 			continue; 
 		}
 		
+		else{
 		$code = generiere_download_code($klassen_name, $thema_name);
 		$fach_given_id = $thema["ThemaID"];
 		if ($fach_given_id != null) //falls ein Fach eingetragen ist....
@@ -197,6 +201,7 @@ function database_insert ($data, $conn)
 		$my_id = $conn->insert_id;
 		$thema_id = $thema["ThemaID"];
 		$thema_id_array[] = [$my_id, $thema_id];
+		}
 	}
 	
 	//Karteikarten
