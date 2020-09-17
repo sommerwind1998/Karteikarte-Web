@@ -30,7 +30,7 @@ function create_html_document ($payload)
 	
 	$view = '
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="index.php">
 		<img src="logo.png" width="30" height="30" alt="">
 		Karteikarten Sharing
 	</a>
@@ -44,7 +44,7 @@ function create_html_document ($payload)
         <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="faecher_uebersicht.php">Fächer</a>
+        <a class="nav-link" href="faecher_uebersicht.php?highlight=0">Fächer</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
