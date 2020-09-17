@@ -132,13 +132,12 @@ function database_insert ($data, $conn)
 		$stmt->bind_param('s', $fach_name_lc);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$fach_id = $result->fetch_assoc()["fach_id"];
-		if ($fach_id != null)
-		{
+		$array = $result->fetch_assoc()
+		if (isset($array["fach_id"])){
+			$fach_id = $array["fach_id"]
 			$fach_id_array[] = [$fach_id, $fach["FachID"]];
 			continue; 
 		}
-		
 		else
 		{
 		//sql
@@ -168,14 +167,14 @@ function database_insert ($data, $conn)
 		$stmt->bind_param('s', $thema_name_lc);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$thema_id = $result->fetch_assoc()["thema_id"];
-		if ($thema_id != null)
-		{
-			$thema_id_array[] = [$thema_id, $thema["ThemaID"]];
+		$array = $result->fetch_assoc()
+		if (isset($array["thema_id"])){
+			$thema_id = $array["thema_id"]
+			$thema_id_array[] = [$thema_id, $fach["ThemaID"]];
 			continue; 
 		}
-		
-		else{
+		else
+		{
 		$code = generiere_download_code($klassen_name, $thema_name);
 		$fach_given_id = $thema["ThemaID"];
 		if ($fach_given_id != null) //falls ein Fach eingetragen ist....
