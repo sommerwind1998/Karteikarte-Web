@@ -43,14 +43,12 @@ function create_html_document ($payload)
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="faecher_uebersicht.php?highlight=0">Fächer</a>
-      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Themen
+        <a class="nav-link dropdown-toggle" href="faecher_uebersicht.php?highlight=0" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Fächer
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="faecher_uebersicht.php?highlight=0">Alle Fächer</a>
           '.$links.'
         </div>
       </li>
