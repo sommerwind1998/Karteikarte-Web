@@ -75,6 +75,12 @@ $output .= '</tr>
 $output .= '</tbody>
 </table>';
 
+$output .= '
+		</tbody>
+	</table>
+		<a href="neues_thema_form.php?fach='.$fach.'"> <button class="btn btn-primary btn-lg">Thema hinzufügen</button> </a>
+';
+
 session_write_close();
 $conn->close(); 
 
