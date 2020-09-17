@@ -63,7 +63,7 @@ if ($admin)
 {
 	$output .= '<th scope="col">
 		<a href="loesche_thema.php?thema='.$thema_id.'">
-			<!-- <img src="link.png" width="30" height="30" alt=""> --> Löschen
+			<img src="delete.png" width="30" height="30" alt="">
 		</a>
 	</th>';
 }	
