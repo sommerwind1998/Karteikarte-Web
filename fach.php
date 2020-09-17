@@ -28,18 +28,17 @@ $stmt->bind_param('i', $fach);
 $stmt->execute();
 $fach_name = $stmt->get_result()->fetch_assoc()["fach_name"];
 
-
 $output = '
 <h1>'.$fach_name.'</h1>
 	<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Thema</th>
-      <th scope="col">Details</th>
 	  ';
 if ($admin)
 {
-	$output .= '<th scope="col">Löschen</th>';
+	$output .= '<th scope="col">Löschen</th>
+				<th scope="col">Verschieben</th>';
 }	
 $output .= '
     </tr>
@@ -72,10 +71,9 @@ while($row = $result->fetch_assoc())
 	
 	$output .= '
     <tr '.$highlight.'>
-      <td style="width:80%">'.$thema_name.'</td>
-      <td style="width:20%">
+      <td style="width:80%">
 		<a href="thema.php?thema='.$thema_id.'">
-			<img src="link.png" width="30" height="30" alt="">
+			'.$thema_name.'
 		</a>
 	  </td>';
 if ($admin)
@@ -83,6 +81,11 @@ if ($admin)
 	$output .= '<th scope="col">
 		<a href="loesche_thema.php?thema='.$thema_id.'">
 			<img src="delete.png" width="30" height="30" alt="">
+		</a>
+	</th>
+	<th scope="col">
+		<a href="thema_verschieben_form.php?thema='.$thema_id.'">
+			<img src="link.png" width="30" height="30" alt="">
 		</a>
 	</th>';
 }	
