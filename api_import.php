@@ -134,7 +134,7 @@ function database_insert ($data, $conn)
 		$result = $stmt->get_result();
 		$array = $result->fetch_assoc()
 		if (isset($array["fach_id"])){
-			$fach_id = $array["fach_id"]
+			$fach_id = $array["fach_id"];
 			$fach_id_array[] = [$fach_id, $fach["FachID"]];
 			continue; 
 		}
