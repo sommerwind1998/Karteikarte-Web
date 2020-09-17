@@ -132,7 +132,7 @@ function database_insert ($data, $conn)
 		$stmt->bind_param('s', $fach_name_lc);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$array = $result->fetch_assoc()
+		$array = $result->fetch_assoc();
 		if (isset($array["fach_id"])){
 			$fach_id = $array["fach_id"];
 			$fach_id_array[] = [$fach_id, $fach["FachID"]];
@@ -167,9 +167,9 @@ function database_insert ($data, $conn)
 		$stmt->bind_param('s', $thema_name_lc);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$array = $result->fetch_assoc()
+		$array = $result->fetch_assoc();
 		if (isset($array["thema_id"])){
-			$thema_id = $array["thema_id"]
+			$thema_id = $array["thema_id"];
 			$thema_id_array[] = [$thema_id, $fach["ThemaID"]];
 			continue; 
 		}
