@@ -46,13 +46,25 @@ $output .= '
   <tbody>
 ';
 
+$highlight = "";
+$highlight_id = 0;
+if (isset($_GET["highlight"]))
+{
+	$highlight_id = $_GET["highlight"];
+}
+
 while($row = $result->fetch_assoc())
 {
 	$thema_id = $row["thema_id"];
 	$thema_name = $row["thema_name"];
 	
+	if ($highlight_id == $thema_id)
+	{
+		$highlight = 'class="table-success"';
+	}
+	
 	$output .= '
-    <tr>
+    <tr '.$highlight.'>
       <td style="width:80%">'.$thema_name.'</td>
       <td style="width:20%">
 		<a href="thema.php?thema='.$thema_id.'">
