@@ -22,6 +22,21 @@ if ($result->fetch_assoc()["admin"] == 1)
 	$admin=true;
 }
 
+$anzahl_karteikarten = [];
+$sql = 'SELECT COUNT(k.karteikarte_id), f.fach_id FROM karteikarte k
+		INNER JOIN thema t ON k.thema = t.thema_id
+		INNER JOIN fach f ON t.fach = f.fach_id
+		WHERE f.klasse = ?
+		GROUP BY t.fach
+		';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $klasse);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc())
+{
+	$anzahl_karteikarten[(int)$row["fach_id"]] = $row["COUNT(k.karteikarte_id)"];
+	}
 $sql = 'SELECT fach_id, fach_name FROM fach WHERE klasse = ?';
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $klasse);
@@ -34,7 +49,7 @@ $output = '
   <thead>
     <tr>
       <th scope="col">Fach</th>
-      <th scope="col">Details</th>
+	  <th scope="col">Karteikarten</th>
 	  ';
 if ($admin)
 {
@@ -60,14 +75,17 @@ while($row = $result->fetch_assoc())
 		$highlight = 'class="table-success"';
 	}
 	
+	$anzahl = 0;
+	if (isset($anzahl_karteikarten[$fach_id]))
+	{
+		$anzahl = $anzahl_karteikarten[$fach_id];
+	}
+	
 	$output .= '
     <tr '.$highlight.'>
-      <td style="width:80%">'.$fach_name.'</td>
-      <td style="width:20%">
-		<a href="fach.php?fach='.$fach_id.'">
-			<img src="link.png" width="30" height="30" alt="">
-		</a>
-	  </td>';
+      <td style="width:70%"><a href="fach.php?fach='.$fach_id.'">'.$fach_name.'</a></td>
+	  <td style="width:20%">'.$anzahl.'</td>
+	  ';
 if ($admin)
 {
 	$output .= '<th scope="col">
