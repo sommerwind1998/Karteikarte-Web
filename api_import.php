@@ -48,6 +48,7 @@ function database_insert ($data, $conn)
 		//daten
 		$text = $antwort["Text"];
 		$bild_given_id = $antwort["BildID"];
+		$bild_id = null;
 		if ($bild_given_id != null) //falls ein Bild eingetragen ist....
 		{
 			foreach ($bild_id_array as $finde_id_array) 
@@ -82,6 +83,7 @@ function database_insert ($data, $conn)
 		//daten
 		$text = $frage["Text"];
 		$bild_given_id = $frage["BildID"];
+		$bild_id = null;
 		if ($bild_given_id != null) //falls ein Bild eingetragen ist....
 		{
 			foreach ($bild_id_array as $finde_id_array) 
