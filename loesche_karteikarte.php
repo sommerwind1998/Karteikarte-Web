@@ -19,9 +19,9 @@ $sql = 'SELECT t.thema_id FROM thema t
 		INNER JOIN  karteikarte k ON t.thema_id = k.thema
 		WHERE k.karteikarte_id = ?';
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $nutzername);
+$stmt->bind_param('i', $id);
 $stmt->execute();
-$admin = $stmt->get_result()->fetch_assoc()["admin"];
+$thema = $stmt->get_result()->fetch_assoc()["thema_id"];
 
 
 if ($admin == 1)
