@@ -8,7 +8,7 @@ $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 
 $klasse = klassen_id($data, $conn);
-$output = get_fächer($klasse, $conn);
+$output = ["Faecher" => get_fächer($klasse, $conn)];
 
 echo(json_encode($output));
 
