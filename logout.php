@@ -13,3 +13,5 @@ echo ('
 		</head>
 	</html>
 	');
+	
+session_write_close();
