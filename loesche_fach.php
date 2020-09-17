@@ -30,7 +30,7 @@ session_write_close();
 echo ('
 	<html>
 		<head>
-			<meta http-equiv="refresh" content="0; url=faecher_uebersicht.php" />
+			<meta http-equiv="refresh" content="0; url=faecher_uebersicht.php?highlight=0" />
 		</head>
 	</html>
 ');
