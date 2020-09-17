@@ -6,7 +6,6 @@ function create_html_document ($payload)
 	$logged_in = isset($_SESSION["user"]);
 	if ($logged_in)
 	{
-		$link_template = '<a class="dropdown-item" href="#">?</a>';
 		$links = "";
 	
 		$params = include("datenbankparameter.php");
