@@ -11,16 +11,7 @@ session_start();
 $fach = $_GET["fach"];
 $user = $_SESSION["user"];
 
-$admin=false;
-$sql = 'SELECT admin FROM benutzer WHERE benutzer_name = ?';
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $user);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->fetch_assoc()["admin"] == 1)
-{
-	$admin=true;
-}
+$admin=is_admin();
 
 $sql = 'SELECT fach_name FROM fach WHERE fach_id = ?';
 $stmt = $conn->prepare($sql);
@@ -102,6 +93,11 @@ $output .= '
 	</table>
 		<a href="neues_thema_form.php?fach='.$fach.'"> <button class="btn btn-primary btn-lg">Thema hinzufügen</button> </a>
 ';
+
+if (!is_in_class())
+{
+	$output = '';
+}
 
 session_write_close();
 $conn->close(); 

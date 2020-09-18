@@ -7,24 +7,10 @@ include "html_helper.php";
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 $thema = $_GET["thema"];
-session_start();
-$logged_in = isset($_SESSION["user"]);
-session_write_close();
 
-if ($logged_in){
+if (is_logged_in()){
 
 $user = $_SESSION["user"];
-
-$admin=false;
-$sql = 'SELECT admin FROM benutzer WHERE benutzer_name = ?';
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $user);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->fetch_assoc()["admin"] == 1)
-{
-	$admin=true;
-}
 
 $sql = 'SELECT thema_name, code FROM thema WHERE thema_id = ?';
 $stmt = $conn->prepare($sql);
@@ -66,7 +52,7 @@ $output = '
       <th scope="col">Antwort</th>
 	  ';
 	  
-	if ($admin)
+	if (is_admin())
 	{
 		$output .= '<th scope="col">Löschen</th>';
 	}

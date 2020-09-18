@@ -117,3 +117,73 @@ session_write_close();
 </html>
 ';
 }
+
+function is_admin()
+{
+	session_write_close();
+	session_start();
+	if (!isset($_SESSION["user"]) OR !isset($_SESSION["klasse"]))
+	{
+		session_write_close();
+		return false;
+	}
+	$params = include("datenbankparameter.php");
+	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+	$user = $_SESSION["user"];
+	$admin=false;
+	$sql = 'SELECT admin FROM benutzer WHERE benutzer_name = ?';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $user);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	if ($result->fetch_assoc()["admin"] == 1)
+	{
+		if (is_in_class())
+		{
+			session_write_close();
+			return true;
+		}
+	}
+	session_write_close();
+	return false;
+}
+
+function is_in_class()
+{
+	session_write_close();
+	session_start();
+	if (!isset($_SESSION["user"]) OR !isset($_SESSION["klasse"]))
+	{
+		session_write_close();
+		return false;
+	}
+	$params = include("datenbankparameter.php");
+	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+	$klasse = $_SESSION["klasse"];
+	$user = $_SESSION["user"];
+	
+	$sql = 'SELECT klasse FROM benutzer WHERE benutzer_name = ?';
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param('s', $user);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	if ($result->fetch_assoc()["klasse"] == $klasse)
+	{
+		session_write_close();
+		return true;
+	}
+	$conn->close(); 
+	session_write_close();
+	return $ret;
+}
+
+function is_logged_in (){
+	session_write_close();
+	session_start();
+	if (isset($_SESSION["user"])){#
+		session_write_close();
+		return true;
+	}
+	session_write_close();
+	return false;
+}

@@ -19,4 +19,10 @@ $output = '
 </form>
 ';
 
+if (!is_logged_in())
+{
+	$output = '<h1>Fehler!</h1>
+	<p>Bitte logge Dich ein, um diese Seite zu sehen.</p>';
+}
+
 echo(create_html_document ($output));

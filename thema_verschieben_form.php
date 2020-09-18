@@ -50,4 +50,10 @@ $output .= '</select>
 </form>
 ';
 
+if (!is_logged_in() OR !is_admin())
+{
+	$output = '<h1>Fehler!</h1>
+	<p>Bitte logge Dich als Admin ein, um diese Seite zu sehen.</p>';
+}
+
 echo(create_html_document ($output));
