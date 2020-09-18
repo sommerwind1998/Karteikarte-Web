@@ -41,7 +41,7 @@ echo ('
 //------------ Helpers --------------
 
 
-//UUID Generator Quelle: https://gist.github.com/dahnielson/508447
+//UUID Generator Quelle: https://www.php.net/manual/de/function.uniqid.php
 function generate_uuid_v4 ()
 {
 	return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
