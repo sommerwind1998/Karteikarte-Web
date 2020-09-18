@@ -11,16 +11,7 @@ session_start();
 $klasse = $_SESSION["klasse"];
 $user = $_SESSION["user"];
 
-$admin=false;
-$sql = 'SELECT admin FROM benutzer WHERE benutzer_name = ?';
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $user);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->fetch_assoc()["admin"] == 1)
-{
-	$admin=true;
-}
+$admin=is_admin();
 
 $anzahl_karteikarten = [];
 $sql = 'SELECT COUNT(k.karteikarte_id), f.fach_id FROM karteikarte k
