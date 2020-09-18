@@ -174,7 +174,7 @@ function is_in_class()
 	}
 	$conn->close(); 
 	session_write_close();
-	return $ret;
+	return false;
 }
 
 function is_logged_in (){
