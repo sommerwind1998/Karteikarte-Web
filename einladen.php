@@ -1,6 +1,6 @@
 <?php
 
-//Das ist die Startseite
+//Hier bekommt man den Einladungslink
 
 include "html_helper.php";
 
@@ -41,5 +41,11 @@ $output = '
 ';
 
 session_write_close();
+
+if (!is_logged_in())
+{
+	$output = '<h1>Fehler!</h1>
+	<p>Bitte logge Dich ein, um diese Seite zu sehen.</p>';
+}
 
 echo(create_html_document ($output));
