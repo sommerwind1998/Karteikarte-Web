@@ -10,6 +10,7 @@ function create_html_document ($payload)
 	
 		$params = include("datenbankparameter.php");
 		$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+		mysqli_set_charset($conn,"utf8");
 
 		$klasse = $_SESSION["klasse"];
 		
@@ -128,6 +129,8 @@ function is_admin()
 		return false;
 	}
 	$params = include("datenbankparameter.php");
+$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 	$user = $_SESSION["user"];
 	$admin=false;
@@ -158,6 +161,8 @@ function is_in_class()
 		return false;
 	}
 	$params = include("datenbankparameter.php");
+$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 	$klasse = $_SESSION["klasse"];
 	$user = $_SESSION["user"];

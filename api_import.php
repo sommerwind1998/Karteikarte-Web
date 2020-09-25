@@ -6,6 +6,7 @@ $data = get_post_data();
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 database_insert($data, $conn);
 

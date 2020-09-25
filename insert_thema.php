@@ -10,6 +10,7 @@ session_write_close();
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $klasse = get_klasse_name($klasse_id, $conn);
 $code = generiere_download_code ($klasse, $thema) ;

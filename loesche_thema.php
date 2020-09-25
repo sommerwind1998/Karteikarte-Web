@@ -8,6 +8,7 @@ $nutzername = $_SESSION["user"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $sql = 'SELECT fach FROM thema WHERE thema_id = ?';
 $stmt = $conn->prepare($sql);

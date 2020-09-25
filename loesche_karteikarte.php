@@ -10,6 +10,7 @@ $nutzername = $_SESSION["user"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $sql = 'SELECT t.thema_id FROM thema t 
 		INNER JOIN  karteikarte k ON t.thema_id = k.thema

@@ -8,6 +8,7 @@ $klasse = $_SESSION["klasse"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $sql = 'INSERT INTO fach (fach_name, klasse) VALUES (?, ?)';
 $stmt = $conn->prepare($sql);

@@ -11,6 +11,8 @@ if (is_admin() AND is_logged_in())
 {
 	$params = include("datenbankparameter.php");
 	$conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+	mysqli_set_charset($conn,"utf8");
+
 
 	$sql = 'UPDATE thema SET fach = ? WHERE thema_id = ?';
 	$stmt = $conn->prepare($sql);

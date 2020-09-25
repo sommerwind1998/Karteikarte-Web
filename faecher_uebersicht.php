@@ -6,6 +6,7 @@ include "html_helper.php";
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 session_start();
 $klasse = $_SESSION["klasse"];
