@@ -8,6 +8,8 @@ $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
 $thema = $_GET["thema"];
 
+$admin=is_admin();
+
 if (is_logged_in()){
 
 $user = $_SESSION["user"];
