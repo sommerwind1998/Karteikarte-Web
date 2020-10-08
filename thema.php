@@ -6,7 +6,10 @@ include "html_helper.php";
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 $thema = $_GET["thema"];
+
+$admin=is_admin();
 
 if (is_logged_in()){
 

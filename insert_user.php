@@ -8,6 +8,7 @@ $uuid = $_POST["uuid"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $klasse_sql = 'SELECT klasse_id FROM klasse WHERE uuid = ?';
 $stmt = $conn->prepare($klasse_sql);

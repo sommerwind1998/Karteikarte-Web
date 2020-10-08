@@ -7,6 +7,7 @@ $passwort = $_POST["password"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 if ($klasse = authentifizierung($nutzername, $passwort, $conn))
 {

@@ -8,6 +8,7 @@ $password = $_POST["password"];
 
 $params = include("datenbankparameter.php");
 $conn = new mysqli($params["host"], $params["username"], $params["password"], $params["database"]);
+mysqli_set_charset($conn,"utf8");
 
 $uuid = generate_uuid_v4();
 
