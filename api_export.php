@@ -59,7 +59,7 @@ function get_karteikarten ($code, $conn)
 		if ($row["antwort_bild"] != null)
 		{
 			$sql_antwort = 'SELECT bild_daten FROM bild WHERE bild_id = ?';
-			$stmt_antwort = $conn->prepare($sql_frage);
+			$stmt_antwort = $conn->prepare($sql_antwort);
 			$stmt_antwort->bind_param('i', $row["antwort_bild"]);
 			$stmt_antwort->execute();
 			$res_a = $stmt_antwort->get_result();
