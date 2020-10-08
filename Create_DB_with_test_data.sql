@@ -1,5 +1,5 @@
 /* 
-	Zum Anlegen mit Testdaten dieses Skript ausf√ºhren
+	Zum Anlegen mit Testdaten dieses Skript ausf¸hren
 	Antworten mit Bildern: IT 3 --> Bool'sche Algebra
 	Antworten mit Bildern und Text: IT 3 --> RAID
 	
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `benutzer` (
 DROP TABLE IF EXISTS `bild`;
 CREATE TABLE IF NOT EXISTS `bild` (
   `bild_id` int(11) NOT NULL AUTO_INCREMENT,
-  `bild_daten` text NOT NULL,
+  `bild_daten` longtext NOT NULL,
   PRIMARY KEY (`bild_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
@@ -131,16 +131,16 @@ INSERT INTO fach (fach_id, fach_name, klasse) VALUES (1, "Sozialkunde", 1); /* F
 INSERT INTO thema (thema_id, thema_name, fach, `code`) VALUES (1, "Soziale Teilhabe", 1, "80085"); /* Thema 1 - Soziale Teilhabe - Fach Sozialkunde */
 
 INSERT INTO frage (frage_id, frage_text) VALUES (1, "Was sind die Grundprinzipien der sozialen Teilhabe?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (1, "Versicherungsprinzip, Versorgungsprinzip, F√ºrsorgeprinzip");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (1, "Versicherungsprinzip, Versorgungsprinzip, F¸rsorgeprinzip");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (1, 1, 1);
-INSERT INTO frage (frage_id, frage_text) VALUES (2, "Was ist das Prinzip der √Ñquivalenz?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (2, "Die H√∂he der Leistungen richtet sich nach der Dauer der Einzahlungen");
+INSERT INTO frage (frage_id, frage_text) VALUES (2, "Was ist das Prinzip der ƒquivalenz?");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (2, "Die Hˆhe der Leistungen richtet sich nach der Dauer der Einzahlungen");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (1, 2, 2);
-INSERT INTO frage (frage_id, frage_text) VALUES (3, "Wo gilt das Prinzip der √Ñquivalenz?");
+INSERT INTO frage (frage_id, frage_text) VALUES (3, "Wo gilt das Prinzip der ƒquivalenz?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (3, "Rente, Arbeitslosengeld, Unfallversicherung, Lohnersatzleistungen (z.B. Krankengeld)");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (1, 3, 3);
 INSERT INTO frage (frage_id, frage_text) VALUES (4, "Was sind die 6 Prinzipien der Sozialversicherung?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (4, "Versicherungspflicht, Beitragsfinanzierung, Solidarit√§t, √Ñquivalenz, Selbstverwaltung, Freiz√ºgigkeit");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (4, "Versicherungspflicht, Beitragsfinanzierung, Solidarit‰t, ƒquivalenz, Selbstverwaltung, Freiz¸gigkeit");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (1, 4, 4);
 
 INSERT INTO fach (fach_id, fach_name, klasse) VALUES (2, "Deutsch-Kommunikation", 1); /* Fach 2 - Deutsch-Kommunikation */
@@ -150,37 +150,37 @@ INSERT INTO thema (thema_id, thema_name, fach, `code`) VALUES (2, "Kommunikation
 INSERT INTO frage (frage_id, frage_text) VALUES (5, "Welche Ebenen hat die Kommunikation im 4-Ohren-Modell?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (5, "Sachebene, Selbstkundgabe, Beziehungsebene, Appellebene");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 5, 5);
-INSERT INTO frage (frage_id, frage_text) VALUES (6, "Was h√∂rt der Empf√§nger auf der Beziehungsebene?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (6, "Haltung und Beziehung des Senders zum Empf√§nger");
+INSERT INTO frage (frage_id, frage_text) VALUES (6, "Was hˆrt der Empf‰nger auf der Beziehungsebene?");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (6, "Haltung und Beziehung des Senders zum Empf‰nger");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 6, 6);
-INSERT INTO frage (frage_id, frage_text) VALUES (7, "Was h√∂rt der Empf√§nger auf der Ebene der Selbstkundgabe?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (7, "Stimmung und Standpunkt des Senders; Gedanken, Gef√ºhle, Pers√∂nlichkeit des Senders");
+INSERT INTO frage (frage_id, frage_text) VALUES (7, "Was hˆrt der Empf‰nger auf der Ebene der Selbstkundgabe?");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (7, "Stimmung und Standpunkt des Senders; Gedanken, Gef¸hle, Persˆnlichkeit des Senders");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 7, 7);
-INSERT INTO frage (frage_id, frage_text) VALUES (8, "Was h√∂rt der Empf√§nger auf der Sachebene?");
+INSERT INTO frage (frage_id, frage_text) VALUES (8, "Was hˆrt der Empf‰nger auf der Sachebene?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (8, "Daten, fakten, Sachverhalte");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 8, 8);
-INSERT INTO frage (frage_id, frage_text) VALUES (9, "Was h√∂rt der Empf√§nger auf der Appellebene?");
+INSERT INTO frage (frage_id, frage_text) VALUES (9, "Was hˆrt der Empf‰nger auf der Appellebene?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (9, "Handlungsanweisungen des Senders");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 9, 9);
 INSERT INTO frage (frage_id, frage_text) VALUES (10, "Was ist die Kernaussage Watzlawicks?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (10, "Verhalten ist Kommunikation");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 10, 10);
-INSERT INTO frage (frage_id, frage_text) VALUES (11, "Was bedeutet es, dass sich Kommunikation analoger und digitaler Modalit√§ten bedient?");
+INSERT INTO frage (frage_id, frage_text) VALUES (11, "Was bedeutet es, dass sich Kommunikation analoger und digitaler Modalit‰ten bedient?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (11, "Sprache + Mimik und Gestik");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (2, 11, 11);
 
 INSERT INTO thema (thema_id, thema_name, fach, `code`) VALUES (3, "Sozialversicherungen", 1, "379009"); /* Thema 3 - Sozialversicherungen - Fach Sozialkunde */
 
 INSERT INTO frage (frage_id, frage_text) VALUES (12, "Was sind die Leistungen der Arbeitslosenversicherung?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (12, "ALG I, Kurzarbeitergeld, Winterausfallgeld, Krankenversicherungsbeitr√§ge Arbeitsloser, Berufsberatung, Umschulung, Gr√ºnderzuschuss, Bewerbungstraining");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (12, "ALG I, Kurzarbeitergeld, Winterausfallgeld, Krankenversicherungsbeitr‰ge Arbeitsloser, Berufsberatung, Umschulung, Gr¸nderzuschuss, Bewerbungstraining");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (3, 12, 12);
 INSERT INTO frage (frage_id, frage_text) VALUES (13, "Was sind die Leistungen der Krankenversicherung?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (13, "Bezuschussung von Arzeneimitteln, Arzt- und Krankenhauskosten, Pr√§ventionsma√ünahmen, Mutterschaftshilfe, Krankengeld ab 7. Woche, Familienhilfe");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (13, "Bezuschussung von Arzeneimitteln, Arzt- und Krankenhauskosten, Pr‰ventionsmaﬂnahmen, Mutterschaftshilfe, Krankengeld ab 7. Woche, Familienhilfe");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (3, 13, 13);
-INSERT INTO frage (frage_id, frage_text) VALUES (14, "Wer sind die Tr√§ger der Unfallversicherungen?");
+INSERT INTO frage (frage_id, frage_text) VALUES (14, "Wer sind die Tr‰ger der Unfallversicherungen?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (14, "Berufsgenossenschaften, Unfallkassen");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (3, 14, 14);
-INSERT INTO frage (frage_id, frage_text) VALUES (15, "Wer ist versicherungspflichtig f√ºr die Rentenversicherung?");
+INSERT INTO frage (frage_id, frage_text) VALUES (15, "Wer ist versicherungspflichtig f¸r die Rentenversicherung?");
 INSERT INTO antwort (antwort_id, antwort_text) VALUES (15, "Alle Arbeitnehmer und Auszubildende");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (3, 15, 15);
 
@@ -215,20 +215,20 @@ INSERT INTO fach (fach_id, fach_name, klasse) VALUES (3, "IT 3", 1); /* Fach 3 -
 
 INSERT INTO thema (thema_id, thema_name, fach, `code`) VALUES (4, "RAID", 3, "984584"); /* Thema 4 - RAID - Fach IT 3 */
 
-INSERT INTO frage (frage_id, frage_text) VALUES (16, "Welche Vorteile k√∂nnen RAID-Systeme haben?");
-INSERT INTO antwort (antwort_id, antwort_text) VALUES (16, "1. Erh√∂hung der Ausfallsicherheit, 2. Steigerung der Daten√ºbertragungsrate, 3. Aufbau logischer Laufwerke, 4. Austausch von Speichermedien, 5. Vergr√∂√üern des Speichers, 6. Kostenreduktion");
+INSERT INTO frage (frage_id, frage_text) VALUES (16, "Welche Vorteile kˆnnen RAID-Systeme haben?");
+INSERT INTO antwort (antwort_id, antwort_text) VALUES (16, "1. Erhˆhung der Ausfallsicherheit, 2. Steigerung der Daten¸bertragungsrate, 3. Aufbau logischer Laufwerke, 4. Austausch von Speichermedien, 5. Vergrˆﬂern des Speichers, 6. Kostenreduktion");
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (4, 16, 16);
 
 INSERT INTO frage (frage_id, frage_text) VALUES (17, "Was ist RAID 0?");
-INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (17, "RAID 0 beschleunigt den Datenzugriff, ohne Redundanzen zu erzeugen. Beim Striping werden Datenbl√∂cke im Rei√üverschlu√üverfahren auf 2 Disks angeordet. F√§llt eine der Festplatten aus, sind nicht nur ihre Daten verloren, sondern auch jene, die sich √ºber beide Festplatten erstreckten.", 1);
+INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (17, "RAID 0 beschleunigt den Datenzugriff, ohne Redundanzen zu erzeugen. Beim Striping werden Datenblˆcke im Reiﬂverschluﬂverfahren auf 2 Disks angeordet. F‰llt eine der Festplatten aus, sind nicht nur ihre Daten verloren, sondern auch jene, die sich ¸ber beide Festplatten erstreckten.", 1);
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (4, 17, 17);
 
 INSERT INTO frage (frage_id, frage_text) VALUES (18, "Was ist RAID 1?");
-INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (18, "Alle Daten werden auf allen Festplatten gespeichert --> Raid 1 bietet volle Redundanz. Die kapazit√§t ist nur so hoch wie der Speicherplatz der kleinsten Festplatte. Die Lesegeschwindigkeit ist bei 2 Platten verdoppelt.", 2);
+INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (18, "Alle Daten werden auf allen Festplatten gespeichert --> Raid 1 bietet volle Redundanz. Die kapazit‰t ist nur so hoch wie der Speicherplatz der kleinsten Festplatte. Die Lesegeschwindigkeit ist bei 2 Platten verdoppelt.", 2);
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (4, 18, 18);
 
 INSERT INTO frage (frage_id, frage_text) VALUES (19, "Was ist RAID 5?");
-INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (19, "RAID 5 implementiert Striping mit Parit√§ten f√ºr jeden Block. D.h. A1 - A3 sind Nutzdaten und Ap deren Parit√§tsinformationen. Dies bietet sowohl gesteigerten Datendurchdsatz beim Lesen, Redundanz der Daten, als auch geringere Kosten.", 3);
+INSERT INTO antwort (antwort_id, antwort_text, antwort_bild) VALUES (19, "RAID 5 implementiert Striping mit Parit‰ten f¸r jeden Block. D.h. A1 - A3 sind Nutzdaten und Ap deren Parit‰tsinformationen. Dies bietet sowohl gesteigerten Datendurchdsatz beim Lesen, Redundanz der Daten, als auch geringere Kosten.", 3);
 INSERT INTO karteikarte (thema, frage, antwort) VALUES (4, 19, 19);
 
 INSERT INTO thema (thema_id, thema_name, fach, `code`) VALUES (5, "Bool'sche Algebra", 3, "5463453"); /* Thema 5 - Bool'sche Algebra - Fach IT 3 */
