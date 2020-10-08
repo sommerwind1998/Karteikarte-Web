@@ -31,7 +31,7 @@ function create_html_document ($payload)
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.php">
 		<img src="logo.png" width="30" height="30" alt="">
-		Karteikarten Sharing
+		Cards against Stupidity
 	</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -102,7 +102,7 @@ session_write_close();
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Karteikarten Sharing</title>
+    <title>Cards against Stupidity</title>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
